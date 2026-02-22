@@ -35,7 +35,7 @@ const Leaderboard = (props: Props) => {
                     setDataOfPlayers(valueForDoing)
                 })
         }
-        setInterval(getLeaderboardOfStuff, 120000)
+        setInterval(getLeaderboardOfStuff, 10000)
     }, [])
     return (
         <>
