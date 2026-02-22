@@ -1,4 +1,6 @@
 let app = require("./Backend/app")
-app.listen(3000, ()=>{
+const port = process.env.PORT || 3000;
+
+app.listen(port, ()=>{
     console.log("App listening to port 5174")
 })
