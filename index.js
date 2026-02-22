@@ -1,0 +1,4 @@
+let app = require("./Backend/app")
+app.listen(3000, ()=>{
+    console.log("App listening to port 5174")
+})

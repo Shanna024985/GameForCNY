@@ -9,6 +9,7 @@ import {
     TableHeader,
     TableRow,
 } from "@/components/ui/table"
+import { data } from 'react-router-dom'
 
 const invoices = [
     {
@@ -54,11 +55,34 @@ const invoices = [
         paymentMethod: "Credit Card",
     },
 ]
-const Leaderboard = () => {
-    let [dataOfPlayers, setDataOfPlayers] = useState([])
-    useEffect(()=>{
+type Props = {
+    currentUrl: String
+}
+type dataPlayersType = {
+    id: number,
+    money: number,
+    username: string
+}[]
 
-    },[])
+const Leaderboard = (props: Props) => {
+    let [dataOfPlayers, setDataOfPlayers] = useState<dataPlayersType>([])
+    useEffect(() => {
+        fetch(props.currentUrl + "/leaderboard")
+            .then((value) => {
+                return value.json();
+            }).then((valueForDoing) => {
+                setDataOfPlayers(valueForDoing)
+            })
+        function getLeaderboardOfStuff() {
+            fetch(props.currentUrl + "/leaderboard")
+                .then((value) => {
+                    return value.json();
+                }).then((valueForDoing) => {
+                    setDataOfPlayers(valueForDoing)
+                })
+        }
+        setInterval(getLeaderboardOfStuff, 120000)
+    }, [])
     return (
         <>
             <Table>
@@ -70,11 +94,11 @@ const Leaderboard = () => {
                     </TableRow>
                 </TableHeader>
                 <TableBody>
-                    {invoices.map((invoice) => (
-                        <TableRow key={invoice.invoice}>
-                            <TableCell className="font-medium text-lg text-center">{invoice.invoice}</TableCell>
-                            <TableCell className='text-center text-lg '>{invoice.paymentStatus}</TableCell>
-                            <TableCell className="text-center text-lg ">{invoice.totalAmount}</TableCell>
+                    {dataOfPlayers.map((invoice, index) => (
+                        <TableRow key={invoice.id}>
+                            <TableCell className="font-medium text-lg text-center">{index + 1}</TableCell>
+                            <TableCell className='text-center text-lg '>{invoice.username}</TableCell>
+                            <TableCell className="text-center text-lg ">${invoice.money}</TableCell>
                         </TableRow>
                     ))}
                 </TableBody>

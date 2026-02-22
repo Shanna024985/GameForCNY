@@ -8,16 +8,21 @@ import Login from './Login'
 import Home from './Home'
 import Dashboard from './Dashboard'
 import QrCodeShown from './ZeroQrCode'
+import Error from './Error'
+import { QrCode } from 'lucide-react'
+import QrCodes from './qrCode'
 
 function App() {
+  const currentUrl = "http://localhost:3000/api"
+      let [money, setMoney] = useState(0)
 
   return (
     <>
       <Routes>
-        <Route path='/' element={<Home/>}/>
-        <Route path='/login' element={<Login/>}/>
-        <Route path='/mydashboard' element={<Dashboard/>}/>
-        <Route path='/testQrCode' element={<QrCodeShown/>}/>
+        <Route path='/' element={<Home currentUrl={currentUrl}/>}/>
+        <Route path='/login' element={<Login currentUrl={currentUrl}/>}/>
+        <Route path='/mydashboard' element={<Dashboard money={money} setMoney={setMoney} currentUrl={currentUrl}/>}/>
+        <Route path='/qrCode' element={<QrCodes currentUrl={currentUrl}/>}/>
       </Routes>
     </>
   )
