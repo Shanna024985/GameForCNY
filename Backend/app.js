@@ -16,8 +16,9 @@ app.use("/",express.static(pathForServingHtmlFile))
 let mainRoutes = require("./routers/mainRoutes")
 app.use("/api",mainRoutes)
 
-// app.get('/:anyPath(*)', (req, res) => {
-//     res.sendFile(path.join(pathForServingHtmlFile,"index.html"));
-// });
+// Catch-all for React Router
+app.use((req, res) => {
+    res.sendFile(path.join(pathForServingHtmlFile, "index.html"));
+});
   
 module.exports = app;
