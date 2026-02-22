@@ -25,7 +25,7 @@ const QrCodeShown = (props: Props) => {
     } else if (props.amt == 28){
       setTextWishes("马上开心 马上有钱")
     } else if (props.amt == 38){
-      setTextWishes("才气旺盛 就是你的")
+      setTextWishes("财气旺盛 就是你啦")
     }
   })
   return (
