@@ -9,7 +9,7 @@ import Dashboard from './Dashboard'
 import QrCodes from './qrCode'
 
 function App() {
-  const currentUrl = "https://gameforcny.onrender.com"
+  const currentUrl = "https://gameforcny.onrender.com/api"
       let [money, setMoney] = useState(0)
 
   return (
