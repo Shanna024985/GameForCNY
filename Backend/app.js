@@ -13,11 +13,11 @@ let pathForServingHtmlFile = path.join(__dirname,"../CNY_Scavenger_Hunt/dist")
 console.log(pathForServingHtmlFile)
 app.use("/",express.static(pathForServingHtmlFile))
 
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname,"../CNY_Scavenger_Hunt","dist","index.html"));
-});
-  
 let mainRoutes = require("./routers/mainRoutes")
 app.use("/api",mainRoutes)
 
+// app.get('/:anyPath(*)', (req, res) => {
+//     res.sendFile(path.join(pathForServingHtmlFile,"index.html"));
+// });
+  
 module.exports = app;
