@@ -1,15 +1,11 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+
 import './App.css'
 import { Route, Routes } from 'react-router-dom'
-import Leaderboard from './Leaderboard'
 import Login from './Login'
 import Home from './Home'
 import Dashboard from './Dashboard'
-import QrCodeShown from './ZeroQrCode'
-import Error from './Error'
-import { QrCode } from 'lucide-react'
+
 import QrCodes from './qrCode'
 
 function App() {

@@ -1,4 +1,3 @@
-import React from 'react'
 
 import horseImage from "./assets/horse.png"
 import Leaderboard from './Leaderboard'

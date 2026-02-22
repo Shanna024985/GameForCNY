@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import  { useEffect, useState } from 'react'
 import Error from "./Error"
 import QrCodeShown from './ZeroQrCode';
 import { useNavigate } from 'react-router-dom';

@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react'
+import  { useEffect, useState } from 'react'
 import { ArrowBigLeft } from 'lucide-react'
-import { useNavigate } from 'react-router-dom'
 type Props = {
     currentUrl: String,
     amt: number

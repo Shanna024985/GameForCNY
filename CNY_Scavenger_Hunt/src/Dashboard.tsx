@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import  { useEffect } from 'react'
 import Error from './Error'
 type Props = {
     currentUrl: String, money: number,

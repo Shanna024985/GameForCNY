@@ -3,7 +3,6 @@ import { Input } from './components/ui/input'
 
 import { useId } from 'react';
 import { Button } from './components/ui/button';
-import { useNavigate } from 'react-router-dom';
 type Props = {
     currentUrl: String
 }
