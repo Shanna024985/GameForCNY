@@ -1,7 +1,6 @@
 import  { useEffect, useState } from 'react'
 import Error from "./Error"
 import QrCodeShown from './ZeroQrCode';
-import { useNavigate } from 'react-router-dom';
 type Props = {
     currentUrl: String
 }
@@ -10,6 +9,7 @@ function CheckToken(props: Props) {
     let address = new URL(window.location.href);
     let queryParameters = address.searchParams;
     let id = queryParameters.get("id");
+    let error = queryParameters.get("error")
     if (!localStorage.getItem("token")) {
         return (
             <>
@@ -17,6 +17,12 @@ function CheckToken(props: Props) {
             </>
 
         );
+    } else if (error == "404") {
+        return (
+            <>
+                <Error status={404} description={"QR code is redeemed"} pageForRedirect={"home"} pageLinkForRedirect={"/mydashboard"}></Error>
+            </>
+        )
     } else if (id == null) {
         return (
             <>
@@ -24,14 +30,13 @@ function CheckToken(props: Props) {
             </>
 
         );
-    } else {
+    }  else {
         return <LoggedInQrCode currentUrl={props.currentUrl} ></LoggedInQrCode>
 
     }
 }
 const LoggedInQrCode = (props: Props) => {
     let [amt, setAmt] = useState(0)
-    let navigate = useNavigate();
     useEffect(() => {
         let address = new URL(window.location.href);
         let queryParameters = address.searchParams;
@@ -46,7 +51,7 @@ const LoggedInQrCode = (props: Props) => {
             body: body
         }).then((value) => {
             if (value.status == 500) {
-                navigate("/", { replace: true })
+                window.location.href =  "/qrcode?error=404"
             } else {
                 return value.json();
             }
