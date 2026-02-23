@@ -17,7 +17,7 @@ const QrCodeShown = (props: Props) => {
     } else if (props.amt == 2){
       setTextWishes("时来运转 乘胜追击")
     } else if (props.amt == 5){
-      setTextWishes("五福临门 五指领钱")
+      setTextWishes("五福临门 五指是钱")
     } else if (props.amt == 8){
       setTextWishes("八方来财 发到手满")
     } else if (props.amt == 18){
