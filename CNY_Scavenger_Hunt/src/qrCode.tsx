@@ -10,7 +10,7 @@ function CheckToken(props: Props) {
     let queryParameters = address.searchParams;
     let id = queryParameters.get("id");
     let error = queryParameters.get("error")
-    if (!localStorage.getItem("token")) {
+    if (!localStorage.getItem("token") || error == "401") {
         return (
             <>
                 <Error status={401} description={"Authorization required"} pageForRedirect={"login"} pageLinkForRedirect={"/login"}></Error>
@@ -52,6 +52,8 @@ const LoggedInQrCode = (props: Props) => {
         }).then((value) => {
             if (value.status == 500) {
                 window.location.href =  "/qrcode?error=404"
+            } else if (value.status == 401){
+                window.location.href =  "/qrcode?error=401"
             } else {
                 return value.json();
             }
