@@ -1,7 +1,8 @@
 import { useEffect } from 'react'
 import Error from './Error'
 type Props = {
-    currentUrl: String, money: number,
+    currentUrl: String, 
+    money: number,
     setMoney: Function
 }
 
