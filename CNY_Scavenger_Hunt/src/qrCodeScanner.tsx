@@ -19,19 +19,21 @@ const QrCodeScanner = () => {
     function success(result: any) {
         scanner.clear();
         setScanResult(result)
-        console.log(result)
     }
     function error(error: any) {
         console.warn(error)
     }
+    let button = document.getElementById("html5-qrcode-anchor-scan-type-change")
+    button?.classList.add("hidden")
     },[])
-
+    let button = document.getElementById("html5-qrcode-anchor-scan-type-change")
+    button?.classList.add("hidden")
   return (
     <div>
         <h1>QR Code Scanner</h1>
         {
             scanResult ?
-            <div>Success: <a href={scanResult}>{scanResult}</a></div>:
+            window.location.href = scanResult:
             <div id='reader'></div>
         }
     </div>
