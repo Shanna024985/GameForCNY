@@ -10,7 +10,7 @@ import QrCodes from './qrCode'
 import QrCodeScanner from './qrCodeScanner'
 
 function App() {
-  const currentUrl = "https://gameforcny.onrender.com/api"
+  const currentUrl = "https://game-for-cny-server.vercel.app/api"
       let [money, setMoney] = useState(0)
 
   return (
