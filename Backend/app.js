@@ -9,7 +9,7 @@ app.use(cors({
 }))
 app.use(express.json())
 app.use(express.urlencoded({extended: false}))
-let pathForServingHtmlFile = path.join(__dirname,"../CNY_Scavenger_Hunt/dist")
+let pathForServingHtmlFile = path.join(__dirname,"dist")
 console.log(pathForServingHtmlFile)
 app.use("/",express.static(pathForServingHtmlFile))
 
