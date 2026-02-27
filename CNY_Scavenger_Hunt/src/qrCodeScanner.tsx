@@ -33,7 +33,7 @@ const QrCodeScanner = () => {
         <h1>QR Code Scanner</h1>
         {
             scanResult ?
-            window.location.href = scanResult:
+            <div>Url: {scanResult}</div>:
             <div id='reader'></div>
         }
     </div>

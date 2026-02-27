@@ -1,4 +1,4 @@
-import  { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import Error from "./Error"
 import QrCodeShown from './ZeroQrCode';
 type Props = {
@@ -30,7 +30,7 @@ function CheckToken(props: Props) {
             </>
 
         );
-    }  else {
+    } else {
         return <LoggedInQrCode currentUrl={props.currentUrl} ></LoggedInQrCode>
 
     }
@@ -51,21 +51,26 @@ const LoggedInQrCode = (props: Props) => {
             body: body
         }).then((value) => {
             if (value.status == 500) {
-                window.location.href =  "/qrcode?error=404"
-            } else if (value.status == 401){
-                window.location.href =  "/qrcode?error=401"
+                window.location.href = "/qrcode?error=404"
+            } else if (value.status == 401) {
+                window.location.href = "/qrcode?error=401"
             } else {
                 return value.json();
             }
         }).then((valueToBeProcessed) => {
             setAmt(valueToBeProcessed.moneys)
             document.getElementById("qrCodeToShow")?.classList.remove("hidden")
+            let root = document.getElementById("root")
+            if (root) {
+                root?.classList.add("bg-red-50")
+                root.style.padding = "0"
+            }
         }).catch((error) => {
             console.error(error)
         })
     }, [])
     return (
-        <div className='hidden' id='qrCodeToShow'>
+        <div className='hidden p-8' id='qrCodeToShow'>
             <QrCodeShown currentUrl={props.currentUrl} amt={amt}></QrCodeShown>
         </div>
     )
