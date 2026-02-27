@@ -62,7 +62,7 @@ const LoggedInQrCode = (props: Props) => {
             document.getElementById("qrCodeToShow")?.classList.remove("hidden")
             let root = document.getElementById("root")
             if (root) {
-                root?.classList.add("bg-red-50")
+                root?.classList.add("bg-red-500")
                 root.style.padding = "0"
             }
         }).catch((error) => {
