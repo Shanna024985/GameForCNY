@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import Error from './Error'
 type Props = {
-    currentUrl: String, 
+    currentUrl: String,
     money: number,
     setMoney: Function
 }
@@ -39,6 +39,11 @@ let LoggedInDashboard = (props: Props) => {
         }).then((value) => {
 
             props.setMoney(value.money)
+            let root = document.getElementById("root")
+            if (root) {
+                root?.classList.add("bg-red-500")
+                root.style.padding = "0"
+            }
         }).catch((error) => {
             console.log(error)
             return <Error pageForRedirect='home' pageLinkForRedirect='/' status={500} description='Something is wrong with our server' ></Error>
